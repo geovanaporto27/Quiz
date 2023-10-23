@@ -1,31 +1,26 @@
 class Questao {
-    private String questionText;
-    private String correctAnswer;
+    private String questaoText;
+    private String RespostaCorreta;
 
-    public Questao(String questionText, String correctAnswer) {
-        this.questionText = questionText;
-        this.correctAnswer = correctAnswer;
+    public Questao(String questaoText, String RespostaCorreta, String questaocText, String questaodText, String respostaCorreta2) {
+        this.questaoText = questaoText;
+        this.RespostaCorreta = RespostaCorreta;
     }
 
-    public String getQuestionText() {
-        return questionText;
+    public String getquestaoText() {
+        return questaoText;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
+    public String getrespostaCorreta() {
+        return RespostaCorreta;
     }
-
-
 
     public static void main(String[] args) {
         QuizGame quiz = new QuizGame();
 
-        // Adicione suas perguntas usando o método addQuestion
-        quiz.criarQuestão("Qual é o nome do professor de POO ", "Antonio Dias");
-        quiz.criarQuestão("A Terra é redonda?", "Sim");
-        quiz.criarQuestão("Quantos alunos tem no segundo período de ADS", "38");
-        quiz.criarQuestão("Qual a capital do Brasil?", "Brasília");
-        quiz.criarQuestão("Quanto é 57 + 28 * 3 / 2?", "99");
+        quiz.criarQuestãoAberta("Qual é o nome do professor de POO ", "Antonio Dias");
+        quiz.criarQuestãoAberta("A Terra é redonda?", "Sim");
+        quiz.criarQuestãoAberta("Quanto é 57 + 28 * 3 / 2?", "99");
 
         int numeroDeQuestoes= 3; 
         quiz.play(numeroDeQuestoes);
@@ -46,17 +41,3 @@ class Questao {
         return null;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

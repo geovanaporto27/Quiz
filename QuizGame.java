@@ -6,16 +6,46 @@ public class QuizGame {
     private List<Questao> questoes = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
-    public void criarQuestão() {
+    public void criarQuestãoAberta(String string) {
         System.out.print("Adicione a Questão: ");
         String questaoText = scanner.nextLine();
         System.out.print("Adicione a resposta correta: ");
         String respostaCorreta = scanner.nextLine();
-        Questao questao = new Questao(questaoText, respostaCorreta);
+        Questao questao = new Questao(questaoText, respostaCorreta, respostaCorreta, respostaCorreta, respostaCorreta);
         questoes.add(questao);
         System.out.println("Questão adicionada!");
     }
 
+    public void criarQuestãoFechada(String string, String string2, String string3, String string4) {
+        System.out.print("Adicione a Questão: ");
+        String questaoText = scanner.nextLine();
+        System.out.print("Adicione a alternativa a): ");
+        String questaoaText = scanner.nextLine();
+        System.out.print("Adicione a alternativa b): ");
+        String questaobText = scanner.nextLine();
+        System.out.print("Adicione a alternativa c): ");
+        String questaocText = scanner.nextLine();
+        System.out.print("Adicione a alternativa d): ");
+        String questaodText = scanner.nextLine();
+        System.out.print("Adicione a resposta correta: ");
+        String respostaCorreta = scanner.nextLine();
+        Questao questao = new Questao(questaoText, questaoaText, questaobText, questaocText, questaodText);
+        questoes.add(questao);
+        System.out.println("Questão adicionada!");
+    }
+
+    public void criarQuestãoVF(String string) {
+        System.out.print("Adicione a Questão: ");
+        String questaoText = scanner.nextLine();
+        System.out.print("Adicione a resposta correta: ");
+        String respostaCorreta = scanner.nextLine();
+        Questao questao = new Questao(questaoText, respostaCorreta, respostaCorreta, respostaCorreta, respostaCorreta);
+        questoes.add(questao);
+        System.out.println("Questão adicionada!");
+    }
+    
+
+    
     public void exibirQuestão() {
         System.out.println("Questões: ");
         for (int i = 0; i < questoes.size(); i++) {
@@ -24,7 +54,7 @@ public class QuizGame {
         }
     }
 
-    public void responderQuestao() {
+    public void responderQuestaoAberta() {
         if (questoes.isEmpty()) {
             System.out.println("Não há questões disponíveis");
             return;
@@ -44,6 +74,49 @@ public class QuizGame {
 
         System.out.println("Quiz completo, sua pontuação é: " + score + "/" + questoes.size());
     }
+
+    public void responderQuestaoFechada() {
+        if (questoes.isEmpty()) {
+            System.out.println("Não há questões disponíveis");
+            return;
+        }
+
+        int score = 0;
+        for (Questao questao : questoes) {
+            System.out.println("Questão: " + questao.getQuestaoText());
+            String userAnswer = scanner.nextLine();
+            if (userAnswer.equalsIgnoreCase(questao.getRespostaCorreta())) {
+                System.out.println("Correto!");
+                score++;
+            } else {
+                System.out.println("Incorreto, a resposta correta é: " + questao.getRespostaCorreta());
+            }
+        }
+
+        System.out.println("Quiz completo, sua pontuação é: " + score + "/" + questoes.size());
+    }
+
+    public void responderQuestaoVF() {
+        if (questoes.isEmpty()) {
+            System.out.println("Não há questões disponíveis");
+            return;
+        }
+
+        int score = 0;
+        for (Questao questao : questoes) {
+            System.out.println("Questão: " + questao.getQuestaoText());
+            String userAnswer = scanner.nextLine();
+            if (userAnswer.equalsIgnoreCase(questao.getRespostaCorreta())) {
+                System.out.println("Correto!");
+                score++;
+            } else {
+                System.out.println("Incorreto, a resposta correta é: " + questao.getRespostaCorreta());
+            }
+        }
+
+        System.out.println("Quiz completo, sua pontuação é: " + score + "/" + questoes.size());
+    }
+
 
     public void removerQuestão() {
         exibirQuestão();
@@ -80,47 +153,16 @@ public class QuizGame {
         }
     }
 
-    public static void main(String[] args) {
-        QuizGame quiz = new QuizGame();
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
-                System.out.println("\nMenu:");
-                System.out.println("1. Criar Nova Questão");
-                System.out.println("2. Responder Questões");
-                System.out.println("3. Editar Questão");
-                System.out.println("4. Remover Questão");
-                System.out.println("5. Sair");
-                System.out.print("Selecione a Opção:");
-
-                int opcao = scanner.nextInt();
-                scanner.nextLine();
-
-                switch (opcao) {
-                    case 1:
-                        quiz.criarQuestão();
-                        break;
-                    case 2:
-                        quiz.responderQuestao();
-                        break;
-                    case 3:
-                        quiz.editarQuestao();
-                        break;
-                    case 4:
-                        quiz.removerQuestão();
-                        break;
-                    case 5:
-                        System.out.println("Adeus!");
-                        System.exit(0);
-                    default:
-                        System.out.println("Escolha inválida!");
-                }
-            }
-        }
+    public void criarQuestãoAberta(String string, String string2) {
     }
 
-    public void criarQuestão(String string, String string2) {
+    public void criarQuestãoVF(String string, String string2) {
+    }
+
+    public void criarQuestãoFechada(String string, String string2) {
     }
 
     public void play(int numeroDeQuestoes) {
+
     }
 }
